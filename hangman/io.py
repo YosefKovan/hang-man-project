@@ -1,4 +1,7 @@
 
+#====================================
+#           prompt guess
+#====================================
 def prompt_guess():
     """asks the user to choose a letter"""
 
@@ -10,24 +13,39 @@ def prompt_guess():
         else:
             print("invalid input try again")
 
+#====================================
+#           render guessed
+#====================================
 def render_guessed(game_data):
     """this function will print the letters that were guessed"""
     print("Letters Guessed: " + ', '.join(game_data["guessed"]))
 
+#====================================
+#           render display
+#====================================
 def render_display(game_data):
     """this will print the letters that were guessed"""
     print("Letters left to guess: " + " ".join(game_data["display"]))
 
+#====================================
+#           render summary
+#====================================
 def render_summary(game_data):
     print("Secret word: " + game_data["secret"])
     render_guessed(game_data)
 
+#====================================
+#           print status
+#====================================
 def print_status(game_data):
 
     render_display(game_data)
     render_guessed(game_data)
     print("Wrong guesses: " + str(game_data["wrong_guesses"]))
 
+#====================================
+#           print result
+#====================================
 def print_result(game_data):
 
     if game_data["wrong_guess"] >= game_data["max_tries"]:
