@@ -1,6 +1,9 @@
 from hangman.words import choose_secret_word
 from hangman.io import prompt_guess, print_status, print_result
 
+#================================
+#         validate guess
+#================================
 def validate_guess(letter, guessed_letters):
     """validates if the letter was already guessed"""
     if letter in guessed_letters:
@@ -8,8 +11,11 @@ def validate_guess(letter, guessed_letters):
 
     return True, "Letter was not guessed in the past"
 
+#================================
+#         add to display
+#================================
 def add_to_display(game_data, letter):
-    """this function will add the guessed letters to the display list"""
+    """this function will add the guessed letters to the display list at the correct index"""
     secret = game_data["secret"]
     display = game_data["display"]
 
@@ -17,6 +23,9 @@ def add_to_display(game_data, letter):
         if secret[i] == letter:
             display.insert(i, letter)
 
+#================================
+#          apply guess
+#================================
 def apply_guess(game_data, letter):
     """this will check if the letter is in the secret and update if needed"""
 
@@ -28,17 +37,26 @@ def apply_guess(game_data, letter):
 
     return False
 
+#================================
+#            is won
+#================================
 def is_won(game_data):
     """check if player won"""
     if '_' in game_data["display"]:
         return False
     return True
 
+#================================
+#            is lost
+#================================
 def is_lost(game_data):
     if game_data["wrong_guesses"] >= game_data["max_tries"]:
         return True
     return False
 
+#================================
+#           init state
+#================================
 def init_state(secret, max_tries):
     """this function initializes the data for the game"""
 
@@ -55,7 +73,11 @@ def init_state(secret, max_tries):
 
     return data
 
+#================================
+#          play round
+#================================
 def play_round(game_data):
+    """this function handles the logic for each round"""
 
     guessed_letter = prompt_guess()
 
@@ -77,6 +99,9 @@ def play_round(game_data):
 
     print_status(game_data)
 
+#================================
+#          play game
+#================================
 def play_game():
     """main game logic and loop"""
 
