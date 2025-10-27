@@ -39,18 +39,6 @@ def is_lost(game_data):
         return True
     return False
 
-def render_guessed(game_data):
-    """this function will print the letters that were guessed"""
-    print("Letters Guessed: " + ', '.join(game_data["guessed"]))
-
-def render_display(game_data):
-    """this will print the letters that were guessed"""
-    print("Letters left to guess: " + " ".join(game_data["display"]))
-
-def render_summary(game_data):
-    render_guessed(game_data)
-    render_display(game_data)
-
 def init_state(secret, max_tries):
     """this function initializes the data for the game"""
 
